@@ -11,13 +11,14 @@ const Navbar = ({ toggleSidebar, selectedMenu = "Dashboard" }) => {
                 <button onClick={toggleSidebar} className="sm:hidden text-gray-500 dark:text-white">
                     <FiMenu size={24} />
                 </button>
-                
+
                 <div className="flex items-center gap-6 ml-auto text-2xl text-gray-900 dark:text-white">
                     <IoMailOutline />
                     <IoMdNotificationsOutline />
                     <CiCircleAlert />
                 </div>
             </nav>
+            
             <nav className="bg-gray-50 dark:bg-[#2479c4]">
                 <div className="max-w-screen-xl px-4 py-3 mx-auto flex justify-between items-center text-white text-xl font-bold">
                     <span>{selectedMenu}</span>
