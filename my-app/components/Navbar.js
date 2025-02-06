@@ -11,6 +11,7 @@ const Navbar = ({ toggleSidebar, selectedMenu = "Dashboard" }) => {
                 <button onClick={toggleSidebar} className="sm:hidden text-gray-500 dark:text-white">
                     <FiMenu size={24} />
                 </button>
+                
                 <div className="flex items-center gap-6 ml-auto text-2xl text-gray-900 dark:text-white">
                     <IoMailOutline />
                     <IoMdNotificationsOutline />
