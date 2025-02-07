@@ -6,8 +6,9 @@ import { CiCircleAlert } from "react-icons/ci";
 
 const Navbar = ({ toggleSidebar, selectedMenu = "Dashboard" }) => {
     return (
-        <div className="sm:ml-64 relative z-50">
-            <nav className="dark:bg-gray-900 p-4 flex justify-between items-center">
+        <div className="sm:ml-64 relative z-50 w-full">
+            <nav className="fixed top-0 left-64 right-0 h-25 dark:bg-gray-900 p-4 flex justify-between items-center">
+
                 <button onClick={toggleSidebar} className="sm:hidden text-gray-500 dark:text-white">
                     <FiMenu size={24} />
                 </button>
@@ -18,8 +19,7 @@ const Navbar = ({ toggleSidebar, selectedMenu = "Dashboard" }) => {
                     <CiCircleAlert />
                 </div>
             </nav>
-            
-            <nav className="bg-gray-50 dark:bg-[#2479c4]">
+            <nav className="fixed top-14 left-64 right-0 w-[calc(100%-16rem)] bg-gray-50 dark:bg-[#2479c4] z-40">
                 <div className="max-w-screen-xl px-4 py-3 mx-auto flex justify-between items-center text-white text-xl font-bold">
                     <span>{selectedMenu}</span>
                     <nav className="hidden sm:flex" aria-label="Breadcrumb">
