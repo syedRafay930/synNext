@@ -13,12 +13,14 @@ export default function SidebarWrapper({ children }) {
 
   return (
     <div className="flex h-screen">
-
+      {/* Sidebar */}
       <SideBar
         isOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}
         setSelectedMenu={setSelectedMenu}
       />
+
+      {/* Content Area with Navbar & Page Content */}
       <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarOpen ? "ml-64" : "sm:ml-0"}`}>
         {/* Navbar */}
         <Navbar
