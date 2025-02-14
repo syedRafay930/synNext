@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MdOutlineDashboard, MdOutlineCreate } from "react-icons/md";
 import { FaListUl } from "react-icons/fa6";
 import { RiContactsLine } from "react-icons/ri";
@@ -7,6 +7,20 @@ import { FiX } from "react-icons/fi";
 import Link from 'next/link';
 
 const SideBar = ({ isOpen, toggleSidebar, setSelectedMenu }) => {
+
+    useEffect(() => {
+        // Default active menu set karega agar localStorage empty hai
+        if (!localStorage.getItem("activeMenu")) {
+            localStorage.setItem("activeMenu", "Dashboard");
+        }
+    }, []);
+
+    const handleMenuClick = (menuName) => {
+        localStorage.setItem("activeMenu", menuName);
+    };
+
+    const activeMenu = localStorage.getItem("activeMenu");
+    
     return (
         <aside
             className={`sticky top-0 left-0 z-40 w-64 h-[100px] bg-white dark:bg-[#081627] dark:border-gray-700 transition-transform ${isOpen ? "translate-x-0" : "-translate-x-full"
@@ -28,47 +42,85 @@ const SideBar = ({ isOpen, toggleSidebar, setSelectedMenu }) => {
             {/* Navigation Links */}
             <div className="h-screen px-4 pb-4 overflow-y-auto bg-white dark:bg-[#081627]">
                 <ul className="space-y-2 font-medium">
-                    <li>
+                <li>
                         <Link href="/">
-                            <button onClick={() => setSelectedMenu("Dashboard")} className="flex w-full text-left items-center p-3 text-gray-900 rounded-md border-b border-gray-200 dark:border-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <MdOutlineDashboard className="text-lg" />
+                            <button 
+                                onClick={() => handleMenuClick("Dashboard")}
+                                className={`flex w-full text-left items-center p-3 rounded-lg transition ${
+                                    activeMenu === "Dashboard"
+                                        ? "text-blue-500 border-l-4 mt-1 border-blue-500 dark:bg-gray-700"
+                                        : "text-gray-900 dark:text-white mt-1 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                }`}
+                            >
+                                <MdOutlineDashboard />
                                 <span className="ml-3">Dashboard</span>
                             </button>
                         </Link>
                     </li>
-
+                
                     <li className="text-gray-500 uppercase text-sm font-bold px-3 pt-2 dark:text-gray-400">
                         Menu
                     </li>
 
                     <li>
                         <Link href="/CreateProfile">
-                            <button onClick={() => setSelectedMenu("Create User")} className="flex w-full text-left items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <MdOutlineCreate className="text-lg" />
+                            <button 
+                                onClick={() => handleMenuClick("Create User")}
+                                className={`flex w-full text-left items-center p-3 rounded-lg transition ${
+                                    activeMenu === "Create User"
+                                        ? "text-blue-500 border-l-4 border-blue-500 bg-gray-100 dark:bg-gray-700"
+                                        : "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                }`}
+                            >
+                                <MdOutlineCreate />
                                 <span className="ml-3">Create User</span>
                             </button>
                         </Link>
                     </li>
+
                     <li>
                         <Link href="/UserList">
-                            <button onClick={() => setSelectedMenu("List of Users")} className="flex w-full text-left items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <FaListUl className="text-lg" />
+                            <button 
+                                onClick={() => handleMenuClick("List of Users")}
+                                className={`flex w-full text-left items-center p-3 rounded-lg transition ${
+                                    activeMenu === "List of Users"
+                                        ? "text-blue-500 border-l-4 border-blue-500 bg-gray-100 dark:bg-gray-700"
+                                        : "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                }`}
+                            >
+                                <FaListUl />
                                 <span className="ml-3">List of Users</span>
                             </button>
                         </Link>
                     </li>
+
                     <li>
                         <Link href="/ContactList">
-                            <button onClick={() => setSelectedMenu("List of Contacts")} className="flex w-full text-left items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <RiContactsLine className="text-lg" />
+                            <button 
+                                onClick={() => handleMenuClick("List of Contacts")}
+                                className={`flex w-full text-left items-center p-3 rounded-lg transition ${
+                                    activeMenu === "List of Contacts"
+                                        ? "text-blue-500 border-l-4 border-blue-500 bg-gray-100 dark:bg-gray-700"
+                                        : "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                }`}
+                            >
+                                <RiContactsLine />
                                 <span className="ml-3">List of Contacts</span>
                             </button>
                         </Link>
                     </li>
+
                     <li>
                         <Link href="/ContactDirectory">
-                            <button onClick={() => setSelectedMenu("Contact Directory")} className="flex w-full text-left items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <VscFileSymlinkDirectory className="text-lg" />
+                            <button 
+                                onClick={() => handleMenuClick("Contact Directory")}
+                                className={`flex w-full text-left items-center p-3 rounded-lg transition ${
+                                    activeMenu === "Contact Directory"
+                                        ? "text-blue-500 border-l-4 border-blue-500 bg-gray-100 dark:bg-gray-700"
+                                        : "text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                }`}
+                            >
+                                <VscFileSymlinkDirectory />
                                 <span className="ml-3">Contact Directory</span>
                             </button>
                         </Link>
