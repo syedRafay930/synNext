@@ -1,9 +1,11 @@
 "use client";
 export default function ContactDirectory() {
-  return (
-    <div>
-      <h1 className="text-4xl font-bold">Welcome to Contact Directory Page</h1>
-      <p className="mt-4 text-gray-600">This is the Contact Directory page content.</p>
-    </div>
-  );
+    return (
+        <div className="p-1 m-0 ml-0 max-w-full">
+            <h1 className="text-4xl font-bold break-words">Welcome to ContactDirectory Page</h1>
+            <p className="mt-4 text-gray-600 break-words whitespace-normal">
+                This is the main ContactDirectory content.
+            </p>
+        </div>
+    );
 }
